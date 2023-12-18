@@ -3,7 +3,7 @@
 		<h1>Articles List</h1>
 		<div class="col-md-6">
 			<ul class="list-group">
-				<li class="list-group-item" v-for="(unArticle, index) in articles" v-bind:key="index" v-on:click.prevent="setActiveArticle(unArticle, index)">{{ unArticle.title }}</li>
+				<li class="list-group-item" v-for="(unArticle, index) in articles" v-bind:key="index" v-on:click="setActiveArticle(unArticle, index)">{{ unArticle.title }}</li>
 			</ul>
 			<button v-on:click="removeAllArticles" class="m-3 btn btn-sm btn-danger">Tout supprimer</button>
 		</div>
