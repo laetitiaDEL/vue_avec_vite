@@ -15,7 +15,7 @@
                     <button  v-on:click.prevent="saveArticle" type="button" class="btn btn-outline-primary">Ajouter un Article</button>
                 </div>
             </form>
-            </div>
+            </div> 
             <div>
                 <h4>Article ajouté en BDD avec Succès</h4>
                 <button class="btn btn-success" >Ajouter un autre article ?</button>
