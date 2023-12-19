@@ -1,14 +1,34 @@
 <template>
-	<div>
-		<h1>ARTICLE... TOUT COURT</h1>
-	</div>
+    <div v-if="currentArticle" class="vision" >
+        <form>
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input v-model="currentArticle.title" type="text" class="form-control" id="title"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea v-model="currentArticle.description" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label><strong>Status:</strong>{{ currentArticle.published ? "Publié" : "En attente" }}</label>
+            </div>
+        </form>
+        <button v-if="currentArticle.published" v-on:click="updatePublished(false)" class="btn btn-outline-dark">Dépublier</button>
+        <button v-else v-on:click="updatePublished(true)" class="btn btn-info mx-1">Publier</button>
+        <button v-on:click="deleteArticle" class="btn btn-danger mx-1" >Supprimer</button>
+        <button v-on:click="updateArticle" type="submit" class="btn btn-success mx-1">Mettre à jour</button>
+        <p>{{ message }}</p>
+    </div>
+    <div v-else>
+        <p>Cliquez sur un article Por Favor</p>
+    </div>
 </template>
 
 <script lang='js'>
 import ArticleDataService from '../services/ArticleDataService';
 
 export default {
-	name: "un-article",
+	name: "article",
 	props: ["article"],
 
 	data(){
