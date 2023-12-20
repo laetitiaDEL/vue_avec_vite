@@ -20,9 +20,13 @@
 </template>
 
 <script lang='js'>
+
+/*service import*/
 import ArticleDataService from "../services/ArticleDataService";
+/* import article component*/
 import ArticleDetails from "./Article.vue";
-export default{
+
+export default {
     name: 'articles-list',
     components:{ ArticleDetails},
     data(){

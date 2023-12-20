@@ -5,7 +5,6 @@ class ArticleDataService{
         getAll(){
             return db;
         };
-    
         create(article){
             return db.push(article);
         }
@@ -13,11 +12,9 @@ class ArticleDataService{
         update(key, value){
             return db.child(key).update(value);
         }
-
         delete(key){
             return db.child(key).remove();
         }
-
         deleteAll(){
             return db.remove();
         }

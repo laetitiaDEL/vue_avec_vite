@@ -16,6 +16,16 @@ const routes =  [
         path: "/add",
         name: "add",
         component: () => import("./components/AddArticle.vue")
+    },
+    {
+        path: "/:patchMatch(.*)",
+        name: "NotFound",
+        component: () => import("./components/NotFound.vue")
+    },
+    {
+        path: "/pokemons",
+        name: "Pokemons",
+        component: () => import("./components/Pokemons.vue")
     }
     ];
     

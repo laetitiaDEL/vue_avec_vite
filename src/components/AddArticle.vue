@@ -24,7 +24,9 @@
     </template>
 
 <script>
+/*service import*/
 import ArticleDataService from '../services/ArticleDataService.js';
+
 export default {
     name:'add-article',
     data(){

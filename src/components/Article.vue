@@ -25,6 +25,8 @@
 </template>
 
 <script lang='js'>
+
+/* service import */
 import ArticleDataService from '../services/ArticleDataService';
 
 export default {
@@ -38,14 +40,17 @@ export default {
 		}
 	},
 
+	/* Watch article */
 	watch:{
-		article: (article)=>{
+		article: function (article){
+			console.log("Watcher de article");
 			this.currentArticle = {...article};
 			this.message = "";
 		}
 	},
 
 	methods:{
+		/* Update published status function */
 		updatePublished(status){
 			ArticleDataService.update(this.currentArticle.key, {published: status})
 			.then(()=>{
@@ -57,6 +62,7 @@ export default {
 			})
 		},
 		
+		/*Update article function */
 		updateArticle(){
 			const data = {
 				title: this.currentArticle.title,
@@ -71,6 +77,7 @@ export default {
 			})
 		},
 
+		/*Delete article function*/
 		deleteArticle(){
 			ArticleDataService.delete(this.currentArticle.key)
 			.then(()=>{
@@ -82,6 +89,7 @@ export default {
 		}
 	},
 
+	/* code to execute when the component is mounted */
 	mounted(){
 		this.message = "";
 		this.currentArticle = {...this.article};

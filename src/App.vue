@@ -15,26 +15,13 @@
         <!--! ici on a remplacer la balise du lien <a></a> par router-link mais en gardant la class bootstrap -->
         <router-link to="/articles" class="nav-link active" aria-current="page" href="#">Articles</router-link>
         <router-link to="/add" class="nav-link" href="#">Ajouter</router-link>
+        <router-link to="/pokemons" class="nav-link" href="#">Pokemons</router-link>
         </div>
       </div>
     </div>
   </nav>
-  <!--! La vue du router , là ou vont être affiché les composant que l'on appelle via les routes -->
+  <!--! La vue du router , là ou vont être affiché les composants que l'on appelle via les routes -->
   <router-view />
   </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em; 
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
