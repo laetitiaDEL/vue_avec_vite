@@ -8,34 +8,34 @@ import { createWebHistory, createRouter } from "vue-router";
 const routes =  [
     {
         path: "/",
-        alias: "/articles",
-        name: "articles",
-        component: () => import("./components/ArticlesList.vue")
+        alias: "/home",
+        name: "Home",
+        component: () => import("../views/Home.vue")
     },
     {
-        path: "/add",
-        name: "add",
-        component: () => import("./components/AddArticle.vue")
+        path: "/feed",
+        name: "Feed",
+        component: () => import("../views/Feed.vue")
     },
     {
         path: "/:patchMatch(.*)",
         name: "NotFound",
-        component: () => import("./components/NotFound.vue")
+        component: () => import("../views/NotFound.vue")
     },
     {
-        path: "/pokemons",
-        name: "Pokemons",
-        component: () => import("./components/Pokemons.vue")
+        path: "/admin",
+        name: "Admin",
+        component: () => import("../views/Admin.vue")
     },
     {
-        path: "/users",
-        name: "users",
-        component: () => import("./components/UsersList.vue")
+        path: "/register",
+        name: "Register",
+        component: () => import("../views/Register.vue")
     },
     { 
-        path: '/user/:id',
-        name:'user',
-        component: () => import("./components/User.vue") 
+        path: "/sign-in",
+        name:"SignIn",
+        component: () => import("../views/SignIn.vue") 
     }
     ];
     

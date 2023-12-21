@@ -1,27 +1,39 @@
-<script setup>
-</script>
-
 <template>
-  <div id="app">
-    <nav class="navbar navbar-expand-lg p-1">
-      <div class="container-fluid">
-        <!--! le logo sera une route ici on utilise <router-link></router-link> pour entourer un lien -->
-      <router-link to="/"><a class="navbar-brand" href="#">VUE 🔥 Firebase 🔥</a></router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <!--! ici on a remplacer la balise du lien <a></a> par router-link mais en gardant la class bootstrap -->
-        <router-link to="/articles" class="nav-link active" aria-current="page" href="#">Articles</router-link>
-        <router-link to="/add" class="nav-link" href="#">Ajouter</router-link>
-        <router-link to="/pokemons" class="nav-link" href="#">Pokemons</router-link>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <!--! La vue du router , là ou vont être affiché les composants que l'on appelle via les routes -->
-  <router-view />
+  <div>
+    <nav>
+      <router-link to="/"> Home </router-link> |
+      <router-link to="/feed"> Feed </router-link> |
+      <span v-if="isLoggedIn">
+        <router-link to="/admin"> Admin </router-link> |
+        <button @click="signOut">Logout</button>
+      </span>
+      <span v-else>
+        <router-link to="/register"> Register </router-link> |
+        <router-link to="/sign-in"> Login </router-link>
+      </span>
+    </nav>
+    <router-view />
   </div>
 </template>
+<script setup>
+import { ref } from 'vue' // pour v-if  conditional rendering
+import firebase from 'firebase'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const isLoggedIn = ref(true)
+// runs after firebase is initialized
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    isLoggedIn.value = true // if we have a user
+    // console.log(isLoggedIn.value);
+  } else {
+    isLoggedIn.value = false // if we do not
+    // console.log(isLoggedIn.value);
+  }
+})
+const signOut = () => {
+  firebase.auth().signOut()
+  router.push('/')
+}
+</script>
 
