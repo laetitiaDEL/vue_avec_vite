@@ -26,6 +26,16 @@ const routes =  [
         path: "/pokemons",
         name: "Pokemons",
         component: () => import("./components/Pokemons.vue")
+    },
+    {
+        path: "/users",
+        name: "users",
+        component: () => import("./components/UsersList.vue")
+    },
+    { 
+        path: '/user/:id',
+        name:'user',
+        component: () => import("./components/User.vue") 
     }
     ];
     
